@@ -24,15 +24,15 @@ xhReq.send(null);
 var data = JSON.parse(xhReq.responseText);
 //data = Object.entries(data).reverse()
 console.log(data);
-const currentDate = new Date().toLocaleString('en-GB');
+const currentDate = new Date();
    let placeholder = document.querySelector("#data-output");
    let out = "";
 for (const key in data) {
   if (data.hasOwnProperty(key)) {
     const entry = data[key];
     var datedata = entry.Date;
-
-if(currentDate.split(", ")[0] == datedata.split(" ")[0]){
+    datedata = new Date().toLocaleString('en-GB');
+    console.log(datedata);
 out += `
          <tr>
             <td>${entry.Date}</td>
@@ -42,7 +42,6 @@ out += `
          </tr>
       `;
   }
-}
 }
 
 placeholder.innerHTML = out;
